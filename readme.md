@@ -1,6 +1,6 @@
 # Python implementation of Jianming Ye's Degrees of Freedom
 
-This repository provides a Python implementation of **Jianming Ye's (1998)** generalized framework for measuring the "Generalized Degrees of Freedom" (GDF). This method is capable of estimating the complexity of **any** modeling procedure, including non-linear, non-parametric, regularized, non-Gaussian methods even when the model is discontinuous in the data and SURE (Stein's Unbiased Risk Estimate) is invalid.
+This repository provides a Python implementation of **Jianming Ye's (1998)** generalized framework for measuring the "Generalized Degrees of Freedom" (GDF). This method is capable of estimating the complexity of **any** modeling procedure, including non-linear, non-parametric, regularized or non-Gaussian methods even when the model is discontinuous in the data and SURE (Stein's Unbiased Risk Estimate) is invalid.
 The estimate consistently estimates the self influence and the resulting degrees of freedom estimate $\hat{\text{df}}$ can therefore be plugged into metrics like Akaike's information criterion (AIC) as the model degrees of freedom.
 
 The estimate is local (dependent on the sample) but by sampling over many simulated datasets a global estimate of the model complexity can also be obtained (see code example).
