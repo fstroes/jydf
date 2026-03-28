@@ -52,7 +52,7 @@ class AheadOptimizeH:
     for one-step-ahead prediction error on any given y.
     """
 
-    def __init__(self, base_model, initial_h=0.5):
+    def __init__(self, base_model, initial_h=0.1):
         self.model = base_model
         self.h = initial_h
 
@@ -79,7 +79,7 @@ class AheadOptimizeH:
             x0=[self.h],
             args=(y,),
             method='L-BFGS-B',
-            bounds=[(0.001, 100.0)],
+            bounds=[(0.01, 100.0)],
             options={'ftol': 1e-3}  # <-- Add this options dictionary
         )
 
@@ -117,7 +117,7 @@ def run_single_estimation(seed, x_data, y_data):
     nw_ahead = StatsKernelWrapperAhead(x_data, bw=.1, skip=1)
     nw_ahead_fit_h = AheadOptimizeH(base_model=nw_ahead)
 
-    jy = JYDF(tau=0.2)
+    jy = JYDF(tau=0.01)
 
     # Run the estimates
     # (Using iterations=1 inside, but we repeat the whole process 10 times)
@@ -129,9 +129,9 @@ def run_single_estimation(seed, x_data, y_data):
 
 
 if __name__ == "__main__":
-    T = 50
+    T = 400
     np.random.seed(22)
-    n_runs = 400
+    n_runs = 100
     # Use as many cores as available
     max_workers = os.cpu_count()
 
